@@ -28,7 +28,9 @@ const generateToken = (id) => {
 // REGISTER
 const registerUser = async (req, res) => {
     try {
-        const { name, email, password } = req.body;
+        let { name, email, password } = req.body;
+
+        email = email.trim().toLowerCase(); // ✅ FIX HERE
 
         if (!name || !email || !password) {
             return res.status(400).json({
@@ -64,7 +66,7 @@ const registerUser = async (req, res) => {
             _id: newUser._id,
             name: newUser.name,
             email: newUser.email,
-            role: newUser.role, 
+            role: newUser.role,
             token: generateToken(newUser._id),
         });
 
