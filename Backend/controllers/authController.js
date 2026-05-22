@@ -60,7 +60,7 @@ const registerUser = async (req, res) => {
 
         const message = `${newUser.name}, your OTP is: ${otp}`;
 
-        await sendMail(email, "OTP Verification", message);
+        // await sendMail(email, "OTP Verification", message);
 
         res.status(201).json({
             _id: newUser._id,
